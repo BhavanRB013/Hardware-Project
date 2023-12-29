@@ -1,0 +1,112 @@
+byte led[]={4,5,6,7,8,9,10,11,12,13};
+int direction =1;
+int currentled=0;
+unsigned long changetime;
+char val;
+int length = 9;
+
+void setup(){
+  Serial.begin(9600);//for serial communication
+
+  for(int pin=4;pin<14;pin++){
+    pinMode(pin,OUTPUT);
+  }
+  
+  for(int i=0;i<10;i++){//Knight rider
+    pinMode(led[i],OUTPUT);
+  }
+
+  changetime=millis();
+}
+
+void loop(){
+  while(Serial.available()>0){
+    val=Serial.read();
+    Serial.println(val);
+  }
+ if(val=='1'){
+  if((millis()-changetime)>65){
+    changeled();
+    changetime=millis();
+  }
+   
+ }
+
+ else if(val=='2'){
+  int t=20;
+  for(int x=4;x<14;x++){
+    digitalWrite(x,HIGH);
+    delay(t);
+    digitalWrite(x+1,HIGH);
+    delay(t);
+    digitalWrite(x+2,HIGH);
+    delay(t);
+    digitalWrite(x,LOW);
+    delay(t);
+    digitalWrite(x-1,LOW);
+    delay(t);
+    
+  }
+
+  for(int y=13;y>3;y--){
+    digitalWrite(y,HIGH);
+    delay(t);
+    digitalWrite(y-1,HIGH);
+    delay(t);
+    digitalWrite(y-2,HIGH);
+    delay(t);
+    digitalWrite(y,LOW);
+    delay(t);
+    digitalWrite(y-1,LOW);
+    delay(t);
+    
+  }
+ }
+
+ else if(val=='3'){
+  for(int k=4;k<14;k++){
+    digitalWrite(k,LOW);
+  }
+  delay(100);
+  for(int q=4;q<14;q++){
+    if(q%2==0){
+      digitalWrite(q,HIGH);
+    }
+  }
+  delay(1000);
+
+  for(int g=4;g<14;g++){
+    if(g%2!=0){
+      digitalWrite(g,HIGH);
+    }
+  }
+ }
+
+ else if(val=='4')
+{
+  for(int d=0;d<length+1;d++){
+    digitalWrite(led[d],HIGH);
+    delay(100);
+    digitalWrite(led[d],LOW);
+    delay(100);
+  }
+  
+  digitalWrite(led[length],HIGH);
+  length-=1;  
+}
+}
+//--------------------------------------------
+void changeled(){
+  for(int j=0;j<10;j++){
+    digitalWrite(led[j],LOW);
+  }
+  digitalWrite(led[currentled],HIGH);
+  currentled+=direction;
+
+  if(currentled==9){
+    direction=-1;
+  }
+  if(currentled==0){
+    direction=1;
+  }
+}
