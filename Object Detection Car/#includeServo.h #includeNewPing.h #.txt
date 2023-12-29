@@ -1,0 +1,59 @@
+#include<Servo.h> #include<NewPing.h> #include<AFMotor.h>
+
+#define TRIG_PIN A0; #define ECHO_PIN A1;
+#define MAX_DISTANCE 300;
+#define COOLIDE_DIST 30;
+#define MAX_SPEED 160;
+#define MAX_SPEED_OFFSET 40;
+
+AF_DCMotor LEFTMOTOR1(1,MOTOR12_1KHZ); AF_DCMotor LEFTMOTOR2(2,MOTOR12_1KHZ);
+ 
+AF_DCMotor RIGHTMOTOR1(3,MOTOR12_1KHZ); AF_DCMotor RIGHTMOTOR2(4,MOTOR12_1KHZ);
+
+Servo myservo;
+NewPing sonar(TRIG_PIN,ECHO_PIN,MAX_DISTANCE); int CURR_DIST=0;
+int LEFTDISTANCE,RIGHTDISTANCE;
+
+void setup()
+{
+myservo.attach(10); myservo.write(90); delay(1000);
+}
+
+void loop()
+{
+myservo.write(90); delay(90); CURR_DIST=readPing();
+
+if(CURR_DIST<COLLIDE_DIST)
+{
+changePath();
+}
+moveForward(); delay(500);
+}
+
+void changePath()
+{
+moveStop(); myservo.write(36); delay(500);
+RIGHTDISTANCE=readPing();
+delay(500); myservo.write(144); delay(500); LEFTDISTANCE=readPing();
+delay(500);
+ 
+myservo.write(90); compareDistance();
+
+}
+
+void compareDistance(){ if(LEFTDISTANCE>RIGHTDISTANCE){
+turnLeft();
+}
+else if(RIGHTDISTANCE>LEFTDISTANCE){
+turnRight();
+}
+else{ turnAround();
+}
+}
+
+void readPing()
+{
+delay(70);
+unsigned int us=sonar.ping();
+int cm=us/US_ROUNDTRIP_CM; return cm;
+}
