@@ -1,0 +1,83 @@
+#include<WiFi.h>
+#include<HTTPClient.h>
+#include<DHT.h>
+
+#define DHTPIN 19
+#define DHTTYPE DHT11
+DHT dht11(DHTPIN,DHTTYPE);
+
+String URL = "http://172.16.4.134/dht11_project/test_data.php";
+
+const char* ssid = "CIT-Campus";
+const char* password = "citchennai";
+
+int temperature =0;
+int humidity = 0;
+
+
+void setup() {
+  Serial.begin(115200);
+  connectWiFi();
+  dht11.begin();
+
+}
+
+void loop() {
+  if(WiFi.status() != WL_CONNECTED){
+    connectWiFi();
+  }
+
+  LOAD_DHT11_DATA();
+  String postData = "temperature=" + String(temperature) + "&humidity=" + String(humidity);
+  HTTPClient http;
+  http.begin(URL);
+
+  http.addHeader("Content-Type","application/x-www-form-urlencoded");
+
+  int httpCode = http.POST(postData);
+
+  String payload = http.getString();
+
+  
+  
+  Serial.print("URL: ");Serial.println(URL);
+  Serial.print("DATA: ");Serial.println(postData);
+  Serial.print("httpCode: ");Serial.println(httpCode);
+  Serial.print("payload: ");Serial.println(payload);
+  Serial.println("--------------------------------");
+
+  http.end();
+  delay(5000); 
+}
+
+void LOAD_DHT11_DATA(){
+  temperature=dht11.readTemperature();
+  humidity=dht11.readHumidity();
+
+  if(isnan(temperature)||isnan(humidity)){
+    Serial.println("Failed to Read from DHT sensor");
+    temperature=0;
+    humidity=0;
+  }
+
+  Serial.printf("Temperature:%d C \n",temperature);
+  Serial.printf("Humidity:%d %%\n",humidity);
+}
+
+void connectWiFi(){
+  WiFi.mode(WIFI_OFF);
+  delay(1000);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid,password);
+  
+  Serial.println("Connecting to wifi");
+
+  while(WiFi.status()!=WL_CONNECTED){
+    delay(500);
+    Serial.print(".");
+   }
+    Serial.print("Connected to ssid: ");Serial.println(ssid);
+    Serial.print("IP Address: ");Serial.print(WiFi.localIP());
+  
+}
