@@ -6,10 +6,10 @@
 #define DHTTYPE DHT11
 DHT dht11(DHTPIN,DHTTYPE);
 
-String URL = "http://172.16.4.134/dht11_project/test_data.php";
+String URL = "http://your ip/dht11_project/test_data.php";
 
-const char* ssid = "CIT-Campus";
-const char* password = "citchennai";
+const char* ssid = "WiFi name";
+const char* password = "Password of the wifi";
 
 int temperature =0;
 int humidity = 0;
