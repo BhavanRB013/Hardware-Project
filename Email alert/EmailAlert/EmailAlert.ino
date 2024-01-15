@@ -1,12 +1,12 @@
 #include<ESP32_MailClient.h>
 // #include<WiFi.h>
 
-const char* ssid = "CIT-Campus";
-const char* password = "citchennai";
+const char* ssid = "wifi name";
+const char* password = "Password";
 
-#define emailSenderAccount "bhavanrb81@gmail.com"
-#define emailSenderPassword "yztd ajqa glug vimc"
-#define emailRecipient "bhavanrb567@gmail.com"
+#define emailSenderAccount "mail to send alert"
+#define emailSenderPassword "Password"
+#define emailRecipient "MAil that receive alert"
 #define smptServer "smtp.gmail.com"
 #define smtpServerPort 465
 #define emailSubject "ESP32 Testing Email"
