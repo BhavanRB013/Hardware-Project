@@ -4,8 +4,8 @@
 #include <Arduino_JSON.h>
 
 //The name and password of wifi need to be connected
-const char* ssid = "NIGGA 1";
-const char* password = "11111111";
+const char* ssid = "Your Wifi name";
+const char* password = "password";
 
 //API key from openweather
 String openWeatherMapApiKey = "815036a6ce6c133139d384f6011040b4";
