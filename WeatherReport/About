@@ -1,0 +1,1 @@
+USing a single ESP 32 as a transmiter to send data to firebase. The data's are fetched from openweather web with the help of API 
