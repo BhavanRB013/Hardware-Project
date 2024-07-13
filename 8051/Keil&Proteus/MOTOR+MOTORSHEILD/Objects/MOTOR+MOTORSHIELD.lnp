@@ -1,0 +1,3 @@
+".\Objects\motor+motorshield.obj" 
+TO ".\Objects\MOTOR+MOTORSHIELD" 
+PRINT(".\Listings\MOTOR+MOTORSHIELD.m51") CODE( 0X0000-0X0FFF )
