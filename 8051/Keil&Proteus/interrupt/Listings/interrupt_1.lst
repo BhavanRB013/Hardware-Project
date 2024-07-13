@@ -1,0 +1,71 @@
+C51 COMPILER V9.60.7.0   INTERRUPT_1                                                       07/09/2024 22:15:03 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE INTERRUPT_1
+OBJECT MODULE PLACED IN .\Objects\interrupt_1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE interrupt_1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\interrupt_1.lst) TABS(2) OBJECT(.\Objects\interrupt_1.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          sbit led1 = P2^0;
+   4          unsigned int i;
+   5          
+   6          
+   7          
+   8          void timer0_isr(void) interrupt 1{
+   9   1        if(i==845){
+  10   2            led1=~led1;
+  11   2            i=0;
+  12   2          }
+  13   1        i++;
+  14   1      }
+  15          
+  16          void main(void){
+  17   1        led1 = 0;
+  18   1        TMOD = 0X11;
+  19   1      
+  20   1        TR0 = 1;
+  21   1        EA  = 1;
+  22   1        ET0 = 1;
+  23   1        
+  24   1        while(1);
+  25   1          
+  26   1        
+  27   1      }
+  28          
+  29          
+  30          
+  31          
+  32          
+  33          
+  34          
+  35          
+  36          
+  37          
+  38          
+  39          
+  40          /*generate interrupt 50ms to blink at P0.0
+  41          Use timer 0 interrupt and tmer 1 mode 1
+  42          
+  43          50000/1.085 = 46.0829
+  44          65535-46.0829 = 19453
+  45          4BFD*/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     48    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   INTERRUPT_1                                                       07/09/2024 22:15:03 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,175 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    05/23/2024  17:32:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\kaypad+lcd.obj TO .\Objects\KAYPAD+LCD PRINT (.\Listings\KAYPAD+LCD.m51) CODE (0X0
+>> 000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\kaypad+lcd.obj (KAYPAD_LCD)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\KAYPAD+LCD (KAYPAD_LCD)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     00E3H     UNIT         ?PR?MAIN?KAYPAD_LCD
+            CODE    08E3H     001DH     UNIT         ?PR?DELAY1?KAYPAD_LCD
+            CODE    0900H     000FH     UNIT         ?PR?DELAY?KAYPAD_LCD
+            CODE    090FH     000EH     UNIT         ?PR?_LCDCMD?KAYPAD_LCD
+            CODE    091DH     000EH     UNIT         ?PR?_LCDDAT?KAYPAD_LCD
+            CODE    092BH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\KAYPAD+LCD (KAYPAD_LCD)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?KAYPAD_LCD
+
+?PR?MAIN?KAYPAD_LCD
+  +--> ?PR?_LCDCMD?KAYPAD_LCD
+  +--> ?PR?DELAY?KAYPAD_LCD
+  +--> ?PR?_LCDDAT?KAYPAD_LCD
+  +--> ?PR?DELAY1?KAYPAD_LCD
+
+?PR?_LCDCMD?KAYPAD_LCD
+  +--> ?PR?DELAY?KAYPAD_LCD
+
+?PR?_LCDDAT?KAYPAD_LCD
+  +--> ?PR?DELAY?KAYPAD_LCD
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/23/2024  17:32:17  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\KAYPAD+LCD (KAYPAD_LCD)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        KAYPAD_LCD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0900H         PUBLIC        delay
+  B:0090H.4       PUBLIC        c1
+  B:0090H.5       PUBLIC        c2
+  B:0090H.6       PUBLIC        c3
+  B:0090H.0       PUBLIC        r1
+  B:0090H.1       PUBLIC        r2
+  B:0090H.2       PUBLIC        r3
+  B:0090H.3       PUBLIC        r4
+  C:0800H         PUBLIC        main
+  C:08E3H         PUBLIC        delay1
+  B:00B0H.2       PUBLIC        en
+  B:00B0H.0       PUBLIC        rs
+  B:00B0H.1       PUBLIC        rw
+  C:090FH         PUBLIC        _lcdcmd
+  C:091DH         PUBLIC        _lcddat
+  -------         PROC          MAIN
+  C:0800H         LINE#         21
+  C:0800H         LINE#         22
+  C:0805H         LINE#         23
+  C:0808H         LINE#         24
+  C:080DH         LINE#         25
+  C:0810H         LINE#         26
+  C:0815H         LINE#         27
+  C:0818H         LINE#         28
+  C:081DH         LINE#         29
+  C:0820H         LINE#         30
+  C:0825H         LINE#         31
+  C:0828H         LINE#         32
+  C:0828H         LINE#         33
+  C:082AH         LINE#         34
+  C:0838H         LINE#         35
+  C:0846H         LINE#         36
+  C:0854H         LINE#         37
+  C:0856H         LINE#         38
+  C:0858H         LINE#         39
+  C:0866H         LINE#         40
+  C:0874H         LINE#         41
+  C:0882H         LINE#         42
+  C:0884H         LINE#         43
+  C:0886H         LINE#         44
+  C:0894H         LINE#         45
+  C:08A2H         LINE#         46
+  C:08B0H         LINE#         47
+  C:08B2H         LINE#         48
+  C:08B4H         LINE#         49
+  C:08C2H         LINE#         50
+  C:08D0H         LINE#         51
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/23/2024  17:32:17  PAGE 3
+
+
+  C:08DEH         LINE#         52
+  C:08E0H         LINE#         54
+  -------         ENDPROC       MAIN
+  -------         PROC          _LCDCMD
+  D:0007H         SYMBOL        val
+  C:090FH         LINE#         56
+  C:090FH         LINE#         57
+  C:0911H         LINE#         58
+  C:0913H         LINE#         59
+  C:0915H         LINE#         60
+  C:0917H         LINE#         61
+  C:091AH         LINE#         62
+  C:091CH         LINE#         63
+  -------         ENDPROC       _LCDCMD
+  -------         PROC          _LCDDAT
+  D:0007H         SYMBOL        v
+  C:091DH         LINE#         64
+  C:091DH         LINE#         65
+  C:091FH         LINE#         66
+  C:0921H         LINE#         67
+  C:0923H         LINE#         68
+  C:0925H         LINE#         69
+  C:0928H         LINE#         70
+  C:092AH         LINE#         71
+  -------         ENDPROC       _LCDDAT
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0900H         LINE#         72
+  C:0900H         LINE#         74
+  C:090EH         LINE#         75
+  -------         ENDPROC       DELAY
+  -------         PROC          DELAY1
+  -------         DO            
+  D:0006H         SYMBOL        j
+  D:0004H         SYMBOL        k
+  -------         ENDDO         
+  C:08E3H         LINE#         76
+  C:08E3H         LINE#         78
+  C:08E6H         LINE#         79
+  C:08FFH         LINE#         80
+  -------         ENDPROC       DELAY1
+  -------         ENDMOD        KAYPAD_LCD
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 012BH BYTE (14%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=314
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

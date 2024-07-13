@@ -1,0 +1,74 @@
+C51 COMPILER V9.60.7.0   MOTOR_MOTORSHIELD                                                 07/13/2024 15:58:24 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MOTOR_MOTORSHIELD
+OBJECT MODULE PLACED IN .\Objects\motor+motorshield.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE motor+motorshield.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\motor+motorshield.lst) TABS(2) OBJECT(.\Objects\motor+motorshield.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          //MOTOR CONNECTION
+   3          sbit mot1p = P1^0;
+   4          sbit mot1n = P1^1;
+   5          sbit mot2p = P1^2;
+   6          sbit mot2n = P1^3;
+   7          //SWITCH
+   8          sbit sw1 = P2^0;
+   9          sbit sw2 = P2^1;
+  10          sbit sw3 = P2^2;
+  11          sbit sw4 = P2^3;
+  12          sbit sw5 = P2^4;
+  13          //MAIN
+  14          void main(){
+  15   1        mot1p=mot1n=mot2p=mot2n=0;
+  16   1        while(1){
+  17   2          if(sw1==0){
+  18   3            mot1p = 1;
+  19   3            mot1n = 0;
+  20   3            mot2p = 1;
+  21   3            mot2n = 0;
+  22   3          }
+  23   2          if(sw2==0){
+  24   3            mot1p = 0;
+  25   3            mot1n = 1;
+  26   3            mot2p = 0;
+  27   3            mot2n = 1;
+  28   3          }
+  29   2          if(sw3==0){
+  30   3            mot1p = 0;
+  31   3            mot1n = 1;
+  32   3            mot2p = 1;
+  33   3            mot2n = 0;
+  34   3          }
+  35   2          if(sw4==0){
+  36   3            mot1p = 1;
+  37   3            mot1n = 0;
+  38   3            mot2p = 0;
+  39   3            mot2n = 1;
+  40   3          }
+  41   2          if(sw5==0){
+  42   3            mot1p = 0;
+  43   3            mot1n = 0;
+  44   3            mot2p = 0;
+  45   3            mot2n = 0;
+  46   3          }
+  47   2        }
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     65    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.7.0   MOTOR_MOTORSHIELD                                                 07/13/2024 15:58:24 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

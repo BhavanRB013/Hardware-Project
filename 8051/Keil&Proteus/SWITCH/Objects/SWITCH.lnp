@@ -1,0 +1,3 @@
+".\Objects\switch.obj" 
+TO ".\Objects\SWITCH" 
+PRINT(".\Listings\SWITCH.m51") CODE( 0X0000-0X0FFF )

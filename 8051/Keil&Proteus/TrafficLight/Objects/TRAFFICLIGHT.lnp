@@ -1,0 +1,3 @@
+".\Objects\TRAFFICLIGHT.obj" 
+TO ".\Objects\TRAFFICLIGHT" 
+PRINT(".\Listings\TRAFFICLIGHT.m51") CODE( 0X0000-0X0FFF )

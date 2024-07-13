@@ -1,0 +1,94 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/09/2024  22:15:03  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\interrupt_1.obj TO .\Objects\interrupt_1 PRINT (.\Listings\interrupt_1.m51) CODE (
+>> 0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\interrupt_1.obj (INTERRUPT_1)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\interrupt_1 (INTERRUPT_1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?INTERRUPT_1
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     0023H     UNIT         ?PR?TIMER0_ISR?INTERRUPT_1
+            CODE    0823H     000DH     UNIT         ?PR?MAIN?INTERRUPT_1
+            CODE    0830H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\interrupt_1 (INTERRUPT_1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?INTERRUPT_1
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\interrupt_1 (INTERRUPT_1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        INTERRUPT_1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0800H         PUBLIC        timer0_isr
+  B:00A8H.7       PUBLIC        EA
+  C:0823H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/09/2024  22:15:03  PAGE 2
+
+
+  B:00A8H.1       PUBLIC        ET0
+  B:0088H.4       PUBLIC        TR0
+  B:00A0H.0       PUBLIC        led1
+  D:0008H         PUBLIC        i
+  -------         PROC          TIMER0_ISR
+  C:0800H         LINE#         8
+  C:0804H         LINE#         9
+  C:080EH         LINE#         10
+  C:0810H         LINE#         11
+  C:0816H         LINE#         12
+  C:0816H         LINE#         13
+  C:081EH         LINE#         14
+  -------         ENDPROC       TIMER0_ISR
+  -------         PROC          MAIN
+  C:0823H         LINE#         16
+  C:0823H         LINE#         17
+  C:0825H         LINE#         18
+  C:0828H         LINE#         20
+  C:082AH         LINE#         21
+  C:082CH         LINE#         22
+  C:082EH         LINE#         24
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        INTERRUPT_1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0033H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=11.0 xdata=0 code=66
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

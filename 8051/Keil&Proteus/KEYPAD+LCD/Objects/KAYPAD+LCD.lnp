@@ -1,0 +1,3 @@
+".\Objects\kaypad+lcd.obj" 
+TO ".\Objects\KAYPAD+LCD" 
+PRINT(".\Listings\KAYPAD+LCD.m51") CODE( 0X0000-0X0FFF )

@@ -1,0 +1,106 @@
+C51 COMPILER V9.60.7.0   KAYPAD_LCD                                                        05/23/2024 17:32:17 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE KAYPAD_LCD
+OBJECT MODULE PLACED IN .\Objects\kaypad+lcd.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE kaypad+lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\kaypad+lcd.lst) TABS(2) OBJECT(.\Objects\kaypad+lcd.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          //KEYPAD
+   3          sbit r1 = P1^0;
+   4          sbit r2 = P1^1;
+   5          sbit r3 = P1^2;
+   6          sbit r4 = P1^3;
+   7          sbit c1 = P1^4;
+   8          sbit c2 = P1^5;
+   9          sbit c3 = P1^6;
+  10          //LCD
+  11          sbit rs = P3^0;
+  12          sbit rw = P3^1;
+  13          sbit en = P3^2;
+  14          sfr lcd = 0xa0;
+  15          //USER-DEFINED FUNC
+  16          void lcdcmd(unsigned char);
+  17          void lcddat(unsigned char);
+  18          void delay();
+  19          void delay1();
+  20          //MAIN FUNC
+  21          void main(){
+  22   1        lcdcmd(0x38);
+  23   1        delay();
+  24   1        lcdcmd(0x01);
+  25   1        delay();
+  26   1        lcdcmd(0x0c);
+  27   1        delay();
+  28   1        lcdcmd(0x06);
+  29   1        delay();
+  30   1        lcdcmd(0x81);
+  31   1        delay();
+  32   1        while(1){
+  33   2          r1=0;
+  34   2            if(c1==0){lcddat('1');delay();delay1();}
+  35   2            if(c2==0){lcddat('2');delay();delay1();}
+  36   2            if(c3==0){lcddat('3');delay();delay1();}
+  37   2          r1=1;
+  38   2          r2=0;
+  39   2            if(c1==0){lcddat('4');delay();delay1();}
+  40   2            if(c2==0){lcddat('5');delay();delay1();}
+  41   2            if(c3==0){lcddat('6');delay();delay1();}
+  42   2          r2=1;
+  43   2          r3=0;
+  44   2            if(c1==0){lcddat('7');delay();delay1();}
+  45   2            if(c2==0){lcddat('8');delay();delay1();}
+  46   2            if(c3==0){lcddat('9');delay();delay1();}
+  47   2          r3=1;
+  48   2          r4=0;
+  49   2            if(c1==0){lcddat('*');delay();delay1();}
+  50   2            if(c2==0){lcddat('0');delay();delay1();}
+  51   2            if(c3==0){lcddat('#');delay();delay1();}
+  52   2          r4=1;
+  53   2          
+  54   2        }
+C51 COMPILER V9.60.7.0   KAYPAD_LCD                                                        05/23/2024 17:32:17 PAGE 2   
+
+  55   1      }
+  56          void lcdcmd(unsigned char val){
+  57   1        P2=val;
+  58   1        rs=0;
+  59   1        rw=0;
+  60   1        en=1;
+  61   1        delay();
+  62   1        en=0;
+  63   1      }
+  64          void lcddat(unsigned char v){
+  65   1        P2=v;
+  66   1        rs=1;
+  67   1        rw=0;
+  68   1        en=1;
+  69   1        delay();
+  70   1        en=0;
+  71   1      }
+  72          void delay(){
+  73   1        unsigned int i;
+  74   1        for(i=0;i<10000;i++);
+  75   1      }
+  76          void delay1(){
+  77   1        unsigned int j,k;
+  78   1        for(j=0;j<200;j++)
+  79   1        for(k=0;k<2000;k++);
+  80   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    299    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
