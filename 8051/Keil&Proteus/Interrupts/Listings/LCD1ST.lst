@@ -1,0 +1,80 @@
+C51 COMPILER V9.60.7.0   LCD1ST                                                            07/09/2024 18:15:03 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LCD1ST
+OBJECT MODULE PLACED IN .\Objects\LCD1ST.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE LCD1ST.C OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\LC
+                    -D1ST.lst) TABS(2) OBJECT(.\Objects\LCD1ST.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          void lcdcmd(unsigned char);
+   3          void lcddata(unsigned char);
+   4          void MSDelay(unsigned int);
+   5          
+   6           //sfr ldata = 0X90; //P3=LCD data pins 
+   7           sbit rs= P2^0;   // register select
+   8           sbit rw= P2^1;   // read write
+   9           sbit en = P2^2;  // enable 
+  10           //sbit busy = P3^7; 
+  11           void main(){
+  12   1       lcdcmd(0x38);
+  13   1        MSDelay(50);
+  14   1       lcdcmd(0x0F);
+  15   1         MSDelay(50);
+  16   1       lcdcmd(0x01);
+  17   1         MSDelay(50);
+  18   1       lcdcmd(0x06);
+  19   1         MSDelay(50);
+  20   1       lcdcmd(0xC7);
+  21   1      MSDelay(50);   //line 1, position 6
+  22   1       lcddata('J');
+  23   1      MSDelay(50);   
+  24   1       lcddata('O');
+  25   1         MSDelay(50);
+  26   1       lcddata('Y');
+  27   1         MSDelay(50);
+  28   1       }
+  29          
+  30           void lcdcmd(unsigned char value){
+  31   1       P3= value;   //put the value on the pins
+  32   1       rs= 0;
+  33   1       rw= 0;
+  34   1       en = 1;          //strobe the enable pin
+  35   1       MSDelay(1);       
+  36   1      en = 0;
+  37   1       return;
+  38   1       }
+  39           
+  40           void lcddata(unsigned char value){ 
+  41   1       P3= value;   //put the value on the pins
+  42   1       rs= 1;
+  43   1       rw= 0;
+  44   1       en = 1;          //strobe the enable pin
+  45   1       MSDelay(1);
+  46   1       en = 0;
+  47   1       return;
+  48   1       }
+  49           
+  50           void MSDelay(unsigned int itime){ 
+  51   1       unsigned int i, j;
+  52   1       for(i=0;i<itime;i++)
+  53   1       for(j=0;j<1275;j++); 
+  54   1      }
+C51 COMPILER V9.60.7.0   LCD1ST                                                            07/09/2024 18:15:03 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    140    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

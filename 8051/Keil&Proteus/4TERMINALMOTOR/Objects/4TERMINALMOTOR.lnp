@@ -1,0 +1,3 @@
+".\Objects\4terminalmotor.obj" 
+TO ".\Objects\4TERMINALMOTOR" 
+PRINT(".\Listings\4TERMINALMOTOR.m51") CODE( 0X0000-0X0FFF )

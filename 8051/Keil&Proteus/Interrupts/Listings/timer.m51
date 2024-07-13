@@ -1,0 +1,144 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/09/2024  18:15:04  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\LCD1ST.obj TO .\Objects\timer PRINT (.\Listings\timer.m51) CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\LCD1ST.obj (LCD1ST)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\timer (LCD1ST)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0044H     UNIT         ?PR?MAIN?LCD1ST
+            CODE    0844H     0024H     UNIT         ?PR?_MSDELAY?LCD1ST
+            CODE    0868H     0012H     UNIT         ?PR?_LCDCMD?LCD1ST
+            CODE    087AH     0012H     UNIT         ?PR?_LCDDATA?LCD1ST
+            CODE    088CH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\timer (LCD1ST)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LCD1ST
+
+?PR?MAIN?LCD1ST
+  +--> ?PR?_LCDCMD?LCD1ST
+  +--> ?PR?_MSDELAY?LCD1ST
+  +--> ?PR?_LCDDATA?LCD1ST
+
+?PR?_LCDCMD?LCD1ST
+  +--> ?PR?_MSDELAY?LCD1ST
+
+?PR?_LCDDATA?LCD1ST
+  +--> ?PR?_MSDELAY?LCD1ST
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\timer (LCD1ST)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/09/2024  18:15:04  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        LCD1ST
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0848H         PUBLIC        _MSDelay
+  C:0800H         PUBLIC        main
+  C:087AH         PUBLIC        _lcddata
+  B:00A0H.2       PUBLIC        en
+  B:00A0H.0       PUBLIC        rs
+  B:00A0H.1       PUBLIC        rw
+  C:0868H         PUBLIC        _lcdcmd
+  -------         PROC          MAIN
+  C:0800H         LINE#         11
+  C:0800H         LINE#         12
+  C:0805H         LINE#         13
+  C:0808H         LINE#         14
+  C:080DH         LINE#         15
+  C:0810H         LINE#         16
+  C:0815H         LINE#         17
+  C:0818H         LINE#         18
+  C:081DH         LINE#         19
+  C:0820H         LINE#         20
+  C:0825H         LINE#         21
+  C:0828H         LINE#         22
+  C:082DH         LINE#         23
+  C:0830H         LINE#         24
+  C:0835H         LINE#         25
+  C:0838H         LINE#         26
+  C:083DH         LINE#         27
+  -------         ENDPROC       MAIN
+  -------         PROC          _LCDCMD
+  D:0007H         SYMBOL        value
+  C:0868H         LINE#         30
+  C:0868H         LINE#         31
+  C:086AH         LINE#         32
+  C:086CH         LINE#         33
+  C:086EH         LINE#         34
+  C:0870H         LINE#         35
+  C:0877H         LINE#         36
+  C:0879H         LINE#         38
+  -------         ENDPROC       _LCDCMD
+  -------         PROC          _LCDDATA
+  D:0007H         SYMBOL        value
+  C:087AH         LINE#         40
+  C:087AH         LINE#         41
+  C:087CH         LINE#         42
+  C:087EH         LINE#         43
+  C:0880H         LINE#         44
+  C:0882H         LINE#         45
+  C:0889H         LINE#         46
+  C:088BH         LINE#         48
+  -------         ENDPROC       _LCDDATA
+  C:0844H         SYMBOL        L?0014
+  -------         PROC          L?0013
+  -------         ENDPROC       L?0013
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/09/2024  18:15:04  PAGE 3
+
+
+  C:0844H         SYMBOL        L?0014
+  -------         PROC          _MSDELAY
+  D:0006H         SYMBOL        itime
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0848H         LINE#         50
+  C:0848H         LINE#         52
+  C:0852H         LINE#         53
+  C:0867H         LINE#         54
+  -------         ENDPROC       _MSDELAY
+  -------         ENDMOD        LCD1ST
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 008CH BYTE ( 6%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=155
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

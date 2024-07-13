@@ -1,0 +1,53 @@
+C51 COMPILER V9.60.7.0   INTERRUPT                                                         07/08/2024 18:20:47 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE INTERRUPT
+OBJECT MODULE PLACED IN .\Objects\interrupt.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE interrupt.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\interrupt.lst) TABS(2) OBJECT(.\Objects\interrupt.obj)
+
+line level    source
+
+   1          #include <reg51.h>  // Include the 8051 register definitions
+   2          unsigned int count;
+   3          sbit led1=P2^1;
+   4          
+   5          // Define the interrupt service routine for Timer 0
+   6          void timer0_ISR(void) interrupt 1 {
+   7   1          TH0 = 0x00;  // Reload high byte for 1ms delay
+   8   1          TL0 = 0x00;  // Reload low byte for 1ms delay
+   9   1            
+  10   1        count++;
+  11   1            // Toggle the state of Port 1
+  12   1      }
+  13          
+  14          void main(void) {
+  15   1          IE = 0x82;    // Enable Timer 0 interrupt (ET0) and global interrupt (EA)
+  16   1          TMOD = 0x01;  // Set Timer 0 in mode 1 (16-bit timer mode)
+  17   1          TH0 = 0x00;  // Reload high byte for 1ms delay
+  18   1          TL0 = 0x00;
+  19   1          TR0 = 1;      // Start Timer 0
+  20   1          
+  21   1          while (1) {
+  22   2              // Main loop can perform other tasks
+  23   2            if(count==43){
+  24   3              led1 = ~led1;
+  25   3              P1 = ~P1;
+  26   3            count=0;
+  27   3            }
+  28   2          }
+  29   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     51    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

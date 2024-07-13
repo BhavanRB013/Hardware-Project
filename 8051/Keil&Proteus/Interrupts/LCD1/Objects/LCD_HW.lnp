@@ -1,0 +1,3 @@
+".\Objects\LCD_HW.obj" 
+TO ".\Objects\LCD_HW" 
+PRINT(".\Listings\LCD_HW.m51") CODE( 0X0000-0X0FFF )

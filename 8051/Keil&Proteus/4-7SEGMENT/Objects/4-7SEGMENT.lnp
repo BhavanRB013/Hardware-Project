@@ -1,0 +1,3 @@
+".\Objects\4-7segment.obj" 
+TO ".\Objects\4-7SEGMENT" 
+PRINT(".\Listings\4-7SEGMENT.m51") CODE( 0X0000-0X0FFF )

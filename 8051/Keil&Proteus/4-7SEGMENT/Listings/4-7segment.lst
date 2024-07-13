@@ -1,0 +1,59 @@
+C51 COMPILER V9.60.7.0   4_7SEGMENT                                                        05/20/2024 17:24:58 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE 4_7SEGMENT
+OBJECT MODULE PLACED IN .\Objects\4-7segment.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 4-7segment.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\4-7segment.lst) TABS(2) OBJECT(.\Objects\4-7segment.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit seg1 = P1^0;
+   3          sbit seg2 = P1^1;
+   4          sbit seg3 = P1^2;
+   5          sbit seg4 = P1^3;
+   6          void delay();
+   7          void main(){
+   8   1        P2=0x00;
+   9   1        seg1=seg2=seg3=seg4=0;
+  10   1        
+  11   1        seg1=1;
+  12   1        P2=0xF9;
+  13   1        delay();
+  14   1        
+  15   1        seg1=0;
+  16   1        seg2=1;
+  17   1        P2=0xB0;
+  18   1        delay();
+  19   1        
+  20   1        seg2=0;
+  21   1        seg3=1;
+  22   1        P2=0xF9;
+  23   1        delay();
+  24   1        
+  25   1        seg3=0;seg4=1;
+  26   1        P2=0x99;
+  27   1        delay();
+  28   1        seg4=0;
+  29   1        
+  30   1      
+  31   1      }
+  32          void delay(){
+  33   1        unsigned int i;
+  34   1        for(i=0;i<60000;i++);
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     78    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

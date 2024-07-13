@@ -1,0 +1,105 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    05/27/2024  11:19:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\4terminalmotor.obj TO .\Objects\4TERMINALMOTOR PRINT (.\Listings\4TERMINALMOTOR.m5
+>> 1) CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\4terminalmotor.obj (4TERMINALMOTOR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\4TERMINALMOTOR (4TERMINALMOTOR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     002EH     UNIT         ?PR?MAIN?4TERMINALMOTOR
+            CODE    082EH     001AH     UNIT         ?PR?DELAY?4TERMINALMOTOR
+            CODE    0848H     0016H     UNIT         ?C?LIB_CODE
+            CODE    085EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\4TERMINALMOTOR (4TERMINALMOTOR)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?4TERMINALMOTOR
+
+?PR?MAIN?4TERMINALMOTOR
+  +--> ?PR?DELAY?4TERMINALMOTOR
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\4TERMINALMOTOR (4TERMINALMOTOR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        4TERMINALMOTOR
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:082EH         PUBLIC        delay
+  B:0090H.0       PUBLIC        l1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/27/2024  11:19:40  PAGE 2
+
+
+  B:0090H.1       PUBLIC        l2
+  B:0090H.2       PUBLIC        l3
+  B:0090H.3       PUBLIC        l4
+  C:0800H         PUBLIC        main
+  -------         PROC          DELAY
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:082EH         LINE#         6
+  C:082EH         LINE#         8
+  C:0847H         LINE#         9
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  C:0800H         LINE#         10
+  C:0800H         LINE#         11
+  C:0800H         LINE#         12
+  C:0802H         LINE#         13
+  C:0808H         LINE#         14
+  C:080BH         LINE#         16
+  C:080DH         LINE#         17
+  C:0813H         LINE#         18
+  C:0816H         LINE#         20
+  C:0818H         LINE#         21
+  C:081EH         LINE#         22
+  C:0821H         LINE#         24
+  C:0823H         LINE#         25
+  C:0829H         LINE#         26
+  C:082CH         LINE#         27
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        4TERMINALMOTOR
+
+  -------         MODULE        ?C?SLCMP
+  C:0848H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0048H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=109
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
