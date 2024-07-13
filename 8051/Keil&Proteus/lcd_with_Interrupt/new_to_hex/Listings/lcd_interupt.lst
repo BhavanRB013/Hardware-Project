@@ -1,0 +1,190 @@
+C51 COMPILER V9.60.7.0   LCD_INTERUPT                                                      07/11/2024 17:25:20 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LCD_INTERUPT
+OBJECT MODULE PLACED IN .\Objects\lcd_interupt.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd_interupt.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\lcd_interupt.lst) TABS(2) OBJECT(.\Objects\lcd_interupt.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<stdio.h>
+   3          
+   4          void lcdcmd(unsigned char);
+   5          void lcddata(unsigned char);
+   6          void lcddataint(unsigned int);
+   7          void lcdstring(unsigned char*);
+   8          void msdelay(unsigned int);
+   9          void lcdnumber(unsigned int);
+  10          
+  11          sbit rs = P2^0;
+  12          sbit rw = P2^1;
+  13          sbit en = P2^2;
+  14          
+  15          sbit sw1 = P2^3;
+  16          sbit sw2 = P2^4;
+  17          
+  18          sbit led1 = P1^0;
+  19          sbit led2 = P1^4;
+  20          
+  21          unsigned int count0,count1,sec0,sec1;
+  22          unsigned int i=1,j=1;
+  23          
+  24          void timer0_isr(void) interrupt 1{
+  25   1        count0++;
+  26   1        sec0++;
+  27   1        
+  28   1      }
+  29          void timer1_isr(void) interrupt 3{
+  30   1        count1++;
+  31   1        sec1++;
+  32   1        
+  33   1      }
+  34          
+  35          void main(void){
+  36   1        
+  37   1        sw1=1;
+  38   1        sw2=1;
+  39   1        led1=0;
+  40   1        led2=0;
+  41   1        
+  42   1        TMOD = 0X11;//0001 0001 mode 1 = 16bit
+  43   1        TH0 = 0X00;
+  44   1        TL0 = 0X00;
+  45   1        TH1 = 0X00;
+  46   1        TL1 = 0X00;
+  47   1        IE = 0X8A;
+  48   1        
+  49   1        lcdcmd(0x38);
+  50   1        msdelay(5);
+  51   1        lcdcmd(0x01);
+  52   1        msdelay(5);
+  53   1        lcdcmd(0x0C);
+  54   1        msdelay(5);
+C51 COMPILER V9.60.7.0   LCD_INTERUPT                                                      07/11/2024 17:25:20 PAGE 2   
+
+  55   1        lcdcmd(0x80);
+  56   1        msdelay(5);
+  57   1        
+  58   1        
+  59   1        lcdstring("waiting..");
+  60   1        lcdcmd(0X01);
+  61   1        lcdcmd(0x80);
+  62   1        lcdstring("LED1 BLINK:");
+  63   1        lcdcmd(0xc0);
+  64   1        lcdstring("LED2 BLINK:");
+  65   1        
+  66   1        
+  67   1      while(1){ 
+  68   2        if(sw1 == 0){
+  69   3          led1 = 1; 
+  70   3          TR0 = 1;    
+  71   3      }
+  72   2        if(sec0==14){
+  73   3          lcdcmd(0X8C);
+  74   3          sec0=0;   
+  75   3          if(i<=60){
+  76   4            lcdcmd(0x8C);
+  77   4            lcdnumber(i++);
+  78   4          }
+  79   3          else{
+  80   4            i=1;
+  81   4            lcdcmd(0X8D);
+  82   4            lcddata(' ');
+  83   4          }
+  84   3          
+  85   3      }
+  86   2      
+  87   2        if(count0==845){    
+  88   3          led1=0;     
+  89   3          count0=0;
+  90   3          TR0 = 0;
+  91   3        }
+  92   2        
+  93   2        
+  94   2      if(sw2 == 0){
+  95   3          led2 = 1;   
+  96   3          TR1=1;
+  97   3      }
+  98   2      
+  99   2      if(sec1==14){
+ 100   3          lcdcmd(0XCC);
+ 101   3          sec1=0;
+ 102   3        if(j<=120){
+ 103   4          lcdcmd(0XCC);
+ 104   4          lcdnumber(j++);
+ 105   4        }else{
+ 106   4            j=1;
+ 107   4          lcdcmd(0XCD);
+ 108   4          lcddata(' ');
+ 109   4          lcdcmd(0XCE);
+ 110   4          lcddata(' ');
+ 111   4          }
+ 112   3          
+ 113   3      }
+ 114   2      
+ 115   2      if(count1 == 1690){
+ 116   3          
+C51 COMPILER V9.60.7.0   LCD_INTERUPT                                                      07/11/2024 17:25:20 PAGE 3   
+
+ 117   3          led2=0;
+ 118   3          count1=0;
+ 119   3          TR1=0;
+ 120   3        } 
+ 121   2      }
+ 122   1      
+ 123   1      }
+ 124          
+ 125          void lcdcmd(unsigned char cmd){
+ 126   1        P3 = cmd;
+ 127   1        rs = 0;
+ 128   1        rw = 0;
+ 129   1        en = 1;
+ 130   1        msdelay(1);
+ 131   1        en = 0;
+ 132   1      }
+ 133          
+ 134          
+ 135          void lcddata(unsigned char value){
+ 136   1        P3 = value;
+ 137   1        rs = 1;
+ 138   1        rw = 0;
+ 139   1        en = 1;
+ 140   1        msdelay(1);
+ 141   1        en = 0;
+ 142   1      }
+ 143          
+ 144          
+ 145          void lcdstring(unsigned char *str){
+ 146   1        while(*str){
+ 147   2          lcddata(*str++);
+ 148   2          msdelay(5);
+ 149   2        }
+ 150   1      }
+ 151          
+ 152          void msdelay(unsigned int itime){
+ 153   1        unsigned int i,j;
+ 154   1        for(i=0;i<itime;i++)
+ 155   1        for(j=0;j<1275;j++);
+ 156   1      }
+ 157          
+ 158          void lcdnumber(unsigned int x){
+ 159   1          char buffer[10];
+ 160   1          sprintf(buffer,"%d",x);
+ 161   1          lcdstring(buffer);
+ 162   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    485    ----
+   CONSTANT SIZE    =     37    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12      13
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

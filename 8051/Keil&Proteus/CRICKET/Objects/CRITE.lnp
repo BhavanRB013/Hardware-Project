@@ -1,0 +1,3 @@
+".\Objects\COUNT_TOT.obj" 
+TO ".\Objects\CRITE" 
+PRINT(".\Listings\CRITE.m51") CODE( 0X0000-0X0FFF )

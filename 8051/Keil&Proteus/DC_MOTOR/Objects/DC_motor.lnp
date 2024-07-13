@@ -1,0 +1,3 @@
+".\Objects\DC_motor.obj" 
+TO ".\Objects\DC_motor" 
+PRINT(".\Listings\DC_motor.m51") CODE( 0X0000-0X0FFF )

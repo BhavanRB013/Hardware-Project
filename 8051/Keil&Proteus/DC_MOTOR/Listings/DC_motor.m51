@@ -1,0 +1,88 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    05/10/2024  11:14:29  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\DC_motor.obj TO .\Objects\DC_motor PRINT (.\Listings\DC_motor.m51) CODE (0X0000-0X
+>> 0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\DC_motor.obj (DC_MOTOR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\DC_motor (DC_MOTOR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0040H     UNIT         ?PR?MAIN?DC_MOTOR
+            CODE    0840H     0016H     UNIT         ?C?LIB_CODE
+            CODE    0856H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\DC_motor (DC_MOTOR)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?DC_MOTOR
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\DC_motor (DC_MOTOR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DC_MOTOR
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:0090H.1       PUBLIC        motneg
+  C:0800H         PUBLIC        main
+  B:0090H.0       PUBLIC        motpo
+  -------         PROC          MAIN
+  -------         DO            
+  D:0082H         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/10/2024  11:14:29  PAGE 2
+
+
+  -------         ENDDO         
+  C:0800H         LINE#         5
+  C:0800H         LINE#         6
+  C:0800H         LINE#         8
+  C:0804H         LINE#         10
+  C:0804H         LINE#         12
+  C:0806H         LINE#         13
+  C:0808H         LINE#         14
+  C:0821H         LINE#         16
+  C:0823H         LINE#         17
+  C:0825H         LINE#         18
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        DC_MOTOR
+
+  -------         MODULE        ?C?SLCMP
+  C:0840H         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0040H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=101
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

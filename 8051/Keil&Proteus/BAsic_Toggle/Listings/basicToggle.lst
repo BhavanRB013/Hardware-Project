@@ -1,0 +1,35 @@
+C51 COMPILER V9.60.7.0   BASICTOGGLE                                                       07/13/2024 15:47:50 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BASICTOGGLE
+OBJECT MODULE PLACED IN .\Objects\basicToggle.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE basicToggle.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\basicToggle.lst) TABS(2) OBJECT(.\Objects\basicToggle.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2            unsigned char a;
+   3          void main(void){
+   4   1      
+   5   1        while(1){
+   6   2          P1 = 0X55;
+   7   2          for(a=0;a<400;a++);
+   8   2          P1 = 0xAA;
+   9   2          for(a=0;a<400;a++);
+  10   2        }
+  11   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

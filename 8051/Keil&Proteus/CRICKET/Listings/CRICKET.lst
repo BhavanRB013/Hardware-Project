@@ -1,0 +1,123 @@
+C51 COMPILER V9.60.7.0   CRICKET                                                           07/12/2024 18:01:45 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE CRICKET
+OBJECT MODULE PLACED IN .\Objects\CRICKET.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE CRICKET.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\C
+                    -RICKET.lst) TABS(2) OBJECT(.\Objects\CRICKET.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          void lcdcmd(unsigned char);
+   4          void msdelay(unsigned int);
+   5          void lcdstring(unsigned char*);
+   6          void lcddata(unsigned char);
+   7          
+   8          sbit sw1=P1^0;//declaration of P1 0 bit
+   9          sbit rs=P2^0;
+  10          sbit rw=P2^1;
+  11          sbit en=P2^2;
+  12          
+  13          unsigned int count_of_press;
+  14          
+  15          void timer0_isr(void) interrupt 1{
+  16   1        
+  17   1      }
+  18          
+  19          //------------------------------------------------
+  20          void main(void){//main function
+  21   1          
+  22   1          sw1=1;//switch as input
+  23   1        
+  24   1          TMOD = 0x01;
+  25   1          TH0 = 0X00;
+  26   1          TL0 = 0X00;
+  27   1          EA = 1;
+  28   1          ET0 = 1;
+  29   1        
+  30   1          lcdcmd(0X38);//5x7 matrix
+  31   1          msdelay(5);//give delay 5ms
+  32   1          lcdcmd(0x0C);//display on cursor blinking off
+  33   1          msdelay(5);
+  34   1          lcdcmd(0x80);//to first line and first col of lcd
+  35   1          msdelay(5);
+  36   1        
+  37   1          lcdstring("Cricket game");//to print on lcd
+  38   1        
+  39   1          while(1){
+  40   2            if(sw1==0){//first time pressed
+  41   3              count_of_press+=1;
+  42   3              if(count_of_press == 1){
+  43   4                lcdcmd(0X01);//clear screen
+  44   4                lcdcmd(0X80);
+  45   4                lcdstring("Game started");
+  46   4                msdelay(5);
+  47   4                lcdcmd(0X01);
+  48   4                lcdstring("1st over: ");
+  49   4              }
+  50   3              
+  51   3            }
+  52   2            
+  53   2            if(count_of_press==2){//check more time sw1 pressed 3rd time
+  54   3                lcdcmd(0X80);
+C51 COMPILER V9.60.7.0   CRICKET                                                           07/12/2024 18:01:45 PAGE 2   
+
+  55   3                lcdstring("2nd over: ");
+  56   3                
+  57   3            }
+  58   2            
+  59   2            if(count_of_press==3){//check more time sw1 pressed 4th time
+  60   3                lcdcmd(0X80);
+  61   3                lcdstring("3rd over: ");
+  62   3                
+  63   3            }
+  64   2          }
+  65   1          
+  66   1      }
+  67          //---------------------------------------------------
+  68          void lcdcmd(unsigned char hexacode){//declaration for cmds 
+  69   1        P3=hexacode;
+  70   1        rs=0;
+  71   1        rw=0;
+  72   1        en=1;
+  73   1        msdelay(1);
+  74   1        en=0;
+  75   1      }
+  76          
+  77          void lcddata(unsigned char value){//declaration for data to print
+  78   1        P3=value;
+  79   1        rs=1;
+  80   1        rw=0;
+  81   1        en=1;
+  82   1        msdelay(1);
+  83   1        en=0;
+  84   1      }
+  85          
+  86          void lcdstring(unsigned char *str){//using pointer to send string as char
+  87   1        while(*str){//checking if the str is null or not
+  88   2          lcddata(*str++);
+  89   2          msdelay(10);
+  90   2        }
+  91   1      }
+  92          
+  93          void msdelay(unsigned int time){
+  94   1          unsigned int i,j;
+  95   1          for(i=0;i<time;i++)
+  96   1          for(j=0;j<1275;j++);
+  97   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    263    ----
+   CONSTANT SIZE    =     59    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

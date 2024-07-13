@@ -1,0 +1,90 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    05/10/2024  11:39:45  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\toggleled.obj TO .\Objects\Toggle led PRINT (.\Listings\Toggle led.m51) CODE (0X00
+>> 00-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\toggleled.obj (TOGGLELED)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?SLCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\Toggle led (TOGGLELED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     003DH     UNIT         ?PR?MAIN?TOGGLELED
+            CODE    083DH     0016H     UNIT         ?C?LIB_CODE
+            CODE    0853H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Toggle led (TOGGLELED)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TOGGLELED
+
+?PR?MAIN?TOGGLELED             0008H    0003H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Toggle led (TOGGLELED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TOGGLELED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0800H         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  05/10/2024  11:39:45  PAGE 2
+
+
+  D:0082H         SYMBOL        i
+  D:0008H         SYMBOL        y
+  D:000AH         SYMBOL        x
+  -------         ENDDO         
+  C:0800H         LINE#         2
+  C:0800H         LINE#         7
+  C:0803H         LINE#         9
+  C:0803H         LINE#         10
+  C:0806H         LINE#         11
+  C:080BH         LINE#         12
+  C:080EH         LINE#         13
+  C:0827H         LINE#         14
+  C:082DH         LINE#         15
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TOGGLELED
+
+  -------         MODULE        ?C?SLCMP
+  C:083DH         PUBLIC        ?C?SLCMP
+  -------         ENDMOD        ?C?SLCMP
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003DH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=98
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

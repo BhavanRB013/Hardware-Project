@@ -1,0 +1,3 @@
+".\Objects\ext_interrupt.obj" 
+TO ".\Objects\ext_interrupt" 
+PRINT(".\Listings\ext_interrupt.m51") CODE( 0X0000-0X0FFF )

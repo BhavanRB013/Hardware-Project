@@ -1,0 +1,111 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    07/11/2024  17:25:44  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\ext_interrupt.obj TO .\Objects\ext_interrupt PRINT (.\Listings\ext_interrupt.m51) 
+>> CODE (0X0000-0X0FFF)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\ext_interrupt.obj (EXT_INTERRUPT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\ext_interrupt (EXT_INTERRUPT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?EXT_INTERRUPT
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+                    0006H     000DH                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     07EAH                  *** GAP ***
+            CODE    0800H     003BH     UNIT         ?PR?MAIN?EXT_INTERRUPT
+            CODE    083BH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0847H     0007H     UNIT         ?PR?INIT_EXTERNAL_INTERRUPTS?EXT_INTERRUPT
+            CODE    084EH     0004H     UNIT         ?PR?EXTERNAL_INTERRUPT_0?EXT_INTERRUPT
+            CODE    0852H     0004H     UNIT         ?PR?EXTERNAL_INTERRUPT_1?EXT_INTERRUPT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\ext_interrupt (EXT_INTERRUPT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?EXT_INTERRUPT
+
+?PR?MAIN?EXT_INTERRUPT
+  +--> ?PR?INIT_EXTERNAL_INTERRUPTS?EXT_INTE...
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\ext_interrupt (EXT_INTERRUPT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        EXT_INTERRUPT
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  07/11/2024  17:25:44  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0800H         PUBLIC        main
+  D:0088H         PUBLIC        TCON
+  C:0847H         PUBLIC        init_external_interrupts
+  C:084EH         PUBLIC        external_interrupt_0
+  C:0852H         PUBLIC        external_interrupt_1
+  B:00B0H.0       PUBLIC        a
+  D:0008H         PUBLIC        i
+  -------         PROC          EXTERNAL_INTERRUPT_0
+  C:084EH         LINE#         6
+  C:084EH         LINE#         7
+  C:0851H         LINE#         8
+  -------         ENDPROC       EXTERNAL_INTERRUPT_0
+  -------         PROC          EXTERNAL_INTERRUPT_1
+  C:0852H         LINE#         10
+  C:0852H         LINE#         11
+  C:0855H         LINE#         12
+  -------         ENDPROC       EXTERNAL_INTERRUPT_1
+  -------         PROC          INIT_EXTERNAL_INTERRUPTS
+  C:0847H         LINE#         15
+  C:0847H         LINE#         17
+  C:084AH         LINE#         20
+  C:084DH         LINE#         21
+  -------         ENDPROC       INIT_EXTERNAL_INTERRUPTS
+  -------         PROC          MAIN
+  C:0800H         LINE#         23
+  C:0800H         LINE#         24
+  C:0803H         LINE#         25
+  C:0805H         LINE#         26
+  C:0808H         LINE#         28
+  C:0808H         LINE#         31
+  C:080AH         LINE#         32
+  C:081FH         LINE#         33
+  C:0821H         LINE#         34
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        EXT_INTERRUPT
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0050H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=11.0 xdata=0 code=95
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
